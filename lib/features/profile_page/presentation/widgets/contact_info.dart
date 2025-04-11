@@ -2,6 +2,7 @@ import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_prof
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ContactInfo extends StatelessWidget {
   const ContactInfo({super.key});
@@ -16,19 +17,19 @@ class ContactInfo extends StatelessWidget {
         } else if (state is UserProfileLoaded) {
           final userProfile = state.userProfile;
           return Container(
-            height: 190,
+            height: 190.h,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-                border: Border.all(), borderRadius: BorderRadius.circular(20)),
+                border: Border.all(), borderRadius: BorderRadius.circular(20.r)),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     localization.contactinfo
                     ,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                   ),
                   Divider(
                     thickness: 1,
@@ -44,23 +45,23 @@ class ContactInfo extends StatelessWidget {
                           color: Colors.orange,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      SizedBox(width: 10.w),
                       SizedBox(
-                        width: MediaQuery.of(context).size.width / 2.5,
+                        width: MediaQuery.of(context).size.width / 2.5.w,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               localization.email,
                               style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
+                                  fontSize: 15.sp, fontWeight: FontWeight.bold),
                             ),
                             Text(
                               userProfile.email,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.bold),
+                                  fontSize: 11.sp, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -71,12 +72,12 @@ class ContactInfo extends StatelessWidget {
                           Text(
                             localization.change,
                             style: TextStyle(
-                              fontSize: 13,
+                              fontSize: 13.sp,
                             ),
                           ),
                           Icon(
                             Icons.edit,
-                            size: 18,
+                            size: 18.sp,
                           ),
                         ],
                       ),

@@ -19,6 +19,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 class BloodGroupEntity {
@@ -150,14 +151,14 @@ class _PersonalStaffAccountCreateFormState
                   backgroundColor: Colors.white,
                   title: Text(
                     localization.createaccountforstaff,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                   ),
                   elevation: 10,
                   shadowColor: Colors.black.withOpacity(0.5),
                 ),
                 body: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding:  EdgeInsets.all(12.0.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -165,26 +166,26 @@ class _PersonalStaffAccountCreateFormState
                           profileImage: _profile,
                           onPickImage: _pickProfileImage,
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         PersonalStaffName(
                             staffNameController: staffNameController),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         DateOfBirth(dobController: dobController),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         StaffMobileNumber(
                             mobileNumberController: mobileNumberController),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         StaffEmergencyNumber(
                             emergencyNumberController:
                                 emergencyNumberController),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         BloodGroupDropdown(
                           selectedBloodGroup: _selectedUserBloodType,
@@ -196,7 +197,7 @@ class _PersonalStaffAccountCreateFormState
                           },
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         GenderDropdown(
                           selectedGender: _selectedUserGender,
@@ -208,24 +209,24 @@ class _PersonalStaffAccountCreateFormState
                           },
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         PersonalStaffRoles(
                           setStaffRoles: setStaffRoles,
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         StaffCitizenshipNumber(
                             citizenshipController: citizenshipController),
                         SizedBox(
-                          height: 10,
+                          height: 10.h,
                         ),
                         SizedBox(
                           child: DecoratedBox(
                             decoration: BoxDecoration(border: Border.all()),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.0.w),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -252,9 +253,9 @@ class _PersonalStaffAccountCreateFormState
                   ),
                 ),
                 bottomNavigationBar: Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding:  EdgeInsets.all(18.0.w),
                   child: SizedBox(
-                    height: 45,
+                    height: 45.h,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.deepOrangeAccent),
@@ -299,7 +300,7 @@ class _PersonalStaffAccountCreateFormState
                         localization.create,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

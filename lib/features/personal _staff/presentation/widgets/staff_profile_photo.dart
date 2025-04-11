@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/widgets/staff_image_picker.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 class StaffProfilePhoto extends StatelessWidget {
@@ -23,8 +24,8 @@ class StaffProfilePhoto extends StatelessWidget {
         GestureDetector(
           onTap: () => showImagePickerDialog(context, onPickImage),
           child: Container(
-            height: 70.0,
-            width: 70.0,
+            height: 70.0.h,
+            width: 70.0.w,
             decoration: BoxDecoration(
               border: Border.all(),
               shape: BoxShape.circle,
@@ -38,30 +39,30 @@ class StaffProfilePhoto extends StatelessWidget {
                         child: Image.file(
                           profileImage!,
                           fit: BoxFit.cover,
-                          width: 90.0,
-                          height: 90.0,
+                          width: 90.0.w,
+                          height: 90.0.h,
                         ),
                       )
-                    : const Icon(
+                    :  Icon(
                         Icons.person,
                         color: Colors.orange,
-                        size: 40,
+                        size: 40.sp,
                       ),
                 // Positioned image icon
                 Positioned(
                   bottom: 0,
-                  right: 5,
+                  right: 5.w,
                   child: Container(
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
-                      border: Border.all(color: Colors.orange, width: 1),
+                      border: Border.all(color: Colors.orange, width: 1.w),
                     ),
-                    child: const Icon(
+                    child:  Icon(
                       Icons.image,
                       color: Colors.orange,
-                      size: 15,
+                      size: 15.sp,
                     ),
                   ),
                 ),
@@ -70,20 +71,20 @@ class StaffProfilePhoto extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: MediaQuery.of(context).size.width / 1.5,
+          width: MediaQuery.of(context).size.width / 1.5.w,
           child: DecoratedBox(
             decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                    Padding(
-                    padding: EdgeInsets.only(bottom: 4.0),
+                    padding: EdgeInsets.only(bottom: 4.0.h),
                     child: Text(
                       localization.addphoto,
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.bold,
                         color: Colors.black87,
                       ),
@@ -93,7 +94,7 @@ class StaffProfilePhoto extends StatelessWidget {
                     localization.photorequiredforeasystaffverficationbyguardandmanagement,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),

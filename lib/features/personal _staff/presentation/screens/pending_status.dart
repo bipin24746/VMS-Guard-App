@@ -4,6 +4,7 @@ import 'package:dayonecontacts/features/personal%20_staff/presentation/bloc/pers
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class PendingStatus extends StatelessWidget {
@@ -48,16 +49,16 @@ class PendingStatus extends StatelessWidget {
                   final staff = state.pendingStaff[index];
 
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:  EdgeInsets.all(8.0.w),
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0.w),
                           child: Row(
                             children: [
                               // CircleAvatar with fallback image
                               CircleAvatar(
-                                radius: 35,
+                                radius: 35.r,
                                 backgroundImage: staff.profileUrl != null && staff.profileUrl!.isNotEmpty
                                     ? NetworkImage(staff.profileUrl!)
                                     : AssetImage(
@@ -66,17 +67,17 @@ class PendingStatus extends StatelessWidget {
                               ),
                               // Profile Image or Placeholder
                               Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
+                                padding:  EdgeInsets.only(left: 8.0.w),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(staff.name.isNotEmpty
                                         ? staff.name
                                         : localization.unknownname),
-                                    SizedBox(height: 5,),
+                                    SizedBox(height: 5.h,),
                                     SizedBox(
-                                      width: 100,
-                                      height: 25,
+                                      width: 100.w,
+                                      height: 25.h,
                                       child: DecoratedBox(
                                         decoration: BoxDecoration(
                                           color: Colors.blue,
@@ -84,6 +85,7 @@ class PendingStatus extends StatelessWidget {
                                         ),
                                         child: Center(
                                           child: Text(
+
                                             // Now access the name from staffRoleId, which is an instance of PersonalStaffRoleModel
                                             staff.staffRoleId.name.isNotEmpty == true
                                                 ? staff.staffRoleId.name

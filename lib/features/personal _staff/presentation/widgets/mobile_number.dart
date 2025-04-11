@@ -1,5 +1,6 @@
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StaffMobileNumber extends StatelessWidget {
   final TextEditingController mobileNumberController;
@@ -10,7 +11,7 @@ class StaffMobileNumber extends StatelessWidget {
     final localization = AppLocalizations.of(context)!;
 
     return SizedBox(
-      height: 45,
+      height: 45.h,
       child: TextFormField(
         controller: mobileNumberController,
         decoration: InputDecoration(

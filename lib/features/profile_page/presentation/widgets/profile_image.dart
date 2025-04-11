@@ -2,6 +2,7 @@ import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_prof
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileImage extends StatefulWidget {
   const ProfileImage({super.key});
@@ -25,8 +26,8 @@ class _ProfileImageState extends State<ProfileImage> {
           return Column(
             children: [
               Container(
-                width: 90,
-                height: 90,
+                width: 90.w,
+                height: 90.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: userProfile.image.isNotEmpty
@@ -37,10 +38,10 @@ class _ProfileImageState extends State<ProfileImage> {
                       : null,
                 ),
                 child: userProfile.image.isEmpty
-                    ? const Center(
+                    ?  Center(
                         child: Icon(
                           Icons.person_2_outlined,
-                          size: 50,
+                          size: 50.sp,
                           color: Colors.grey,
                         ),
                       )
@@ -49,22 +50,22 @@ class _ProfileImageState extends State<ProfileImage> {
               Text(
                 userProfile.name,
                 style:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                     TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
               ),
               DecoratedBox(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey,
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(20.r),
                   border: Border.all(),
                 ),
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+                       EdgeInsets.symmetric(horizontal: 10.w, vertical: 1.h),
                   child: Text(
                     userProfile.type,
-                    style: const TextStyle(
+                    style:  TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 10,
+                        fontSize: 10.sp,
                         color: Colors.white),
                   ),
                 ),

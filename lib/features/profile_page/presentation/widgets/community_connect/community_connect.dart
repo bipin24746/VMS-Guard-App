@@ -5,6 +5,7 @@ import 'package:dayonecontacts/features/profile_page/presentation/widgets/commun
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommunityConnect extends StatefulWidget {
   const CommunityConnect({super.key});
@@ -26,7 +27,7 @@ class _CommunityConnectState extends State<CommunityConnect> {
       isDismissible: true,
       builder: (BuildContext context) {
         return Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding:  EdgeInsets.all(16.0.w),
           child: BlocProvider(
             create: (context) => sl<UserProfileBloc>(),
             child: BlocListener<UserProfileBloc, UserProfileState>(
@@ -98,10 +99,10 @@ class _CommunityConnectState extends State<CommunityConnect> {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.all(),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(10.r),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:  EdgeInsets.all(8.0.w),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -120,21 +121,21 @@ class _CommunityConnectState extends State<CommunityConnect> {
                             Text(
                               localization.communityconnect,
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
+                                  fontWeight: FontWeight.bold, fontSize: 15.sp),
                             ),
-                            SizedBox(width: 5),
+                            SizedBox(width: 5.w),
                             DecoratedBox(
                               decoration: BoxDecoration(
                                 color: Colors.green,
-                                borderRadius: BorderRadius.circular(25),
+                                borderRadius: BorderRadius.circular(25.r),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding:  EdgeInsets.all(4.0.w),
                                 child: Text(
                                   localization.releasingsoon,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 10,
+                                      fontSize: 10.sp,
                                       color: Colors.white),
                                 ),
                               ),
@@ -150,7 +151,7 @@ class _CommunityConnectState extends State<CommunityConnect> {
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
+                              padding:  EdgeInsets.only(left: 8.0.w),
                               child: Transform.scale(
                                 scale: 0.8,
                                 child: Switch(

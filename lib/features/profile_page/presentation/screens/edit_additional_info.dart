@@ -7,6 +7,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 @RoutePage()
@@ -150,7 +151,7 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
               ),
               body: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:  EdgeInsets.all(8.0.w),
                   child: Column(
                     children: [
                       // Name input field
@@ -158,28 +159,28 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
                         controller: editNameController,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(10.r),
                           ),
                           labelText: localization.name,
                         ),
                       ),
-                      const SizedBox(height: 10),
+                       SizedBox(height: 10.h),
 
                       // Gender dropdown
                       DecoratedBox(
                         decoration: BoxDecoration(
                             border: Border.all(),
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(10.r)),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
+                          padding:  EdgeInsets.only(left: 10.0.w),
                           child: DropdownButton<String>(
                             value: _selectedUserGender,
                             hint: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.0.w),
                               child: Text(
                                 localization.selectgender,
                                 style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                    fontSize: 15.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
                             isExpanded: true,
@@ -198,23 +199,23 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                       SizedBox(height: 10.h),
 
                       // Blood group dropdown
                       DecoratedBox(
                         decoration: BoxDecoration(
                             border: Border.all(),
-                            borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(10.r)),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
+                          padding:  EdgeInsets.only(left: 10.0.w),
                           child: DropdownButton<String>(
                             value: _selectedUserBloodType,
                             hint: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.0.w),
                               child: Text(
                                 localization.bloodgroup,
                                 style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                    fontSize: 15.sp, fontWeight: FontWeight.bold),
                               ),
                             ),
                             isExpanded: true,
@@ -231,19 +232,19 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                       SizedBox(height: 10.h),
 
                       // Date of birth picker
                       SizedBox(
-                        height: 50,
+                        height: 50.h,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                               border: Border.all(),
-                              borderRadius: BorderRadius.circular(10)),
+                              borderRadius: BorderRadius.circular(10.r)),
                           child: GestureDetector(
                             onTap: () => _selectDate(context),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding:  EdgeInsets.all(8.0.w),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
@@ -253,7 +254,7 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
                                         ? _formatDateOfBirth(_selectedDOB!)
                                         : localization.selectdateofbirth,
                                     style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 16.sp,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -264,15 +265,15 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                       SizedBox(height: 10.h),
                     ],
                   ),
                 ),
               ),
               bottomNavigationBar: Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding:  EdgeInsets.all(18.0.w),
                 child: SizedBox(
-                  height: 50,
+                  height: 50.h,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.deepOrangeAccent),
@@ -308,7 +309,7 @@ class _EditAdditionalInfoState extends State<EditAdditionalInfo> {
                             localization.update,
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

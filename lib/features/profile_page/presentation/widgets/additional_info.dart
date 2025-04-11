@@ -1,5 +1,6 @@
 import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_profile_bloc.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/di/injection.dart';
@@ -69,7 +70,7 @@ class AdditionalInfo extends StatelessWidget {
 
               child: DecoratedBox(decoration: BoxDecoration(
                   border: Border.all(), borderRadius: BorderRadius.circular(20)),child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:  EdgeInsets.all(8.0.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -79,7 +80,7 @@ class AdditionalInfo extends StatelessWidget {
                           localization.additionalinfo
                           ,
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
                         Spacer(),
                         GestureDetector(
@@ -107,9 +108,9 @@ class AdditionalInfo extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                            width: 10), // Space between the avatar and content
+                            width: 10.w), // Space between the avatar and content
                         SizedBox(
-                          width: MediaQuery.of(context).size.width / 2.15,
+                          width: MediaQuery.of(context).size.width / 2.15.w,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +118,7 @@ class AdditionalInfo extends StatelessWidget {
                               Text(
                                 localization.name,
                                 style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                    fontSize: 15.sp, fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 userProfile.name.isNotEmpty
@@ -150,7 +151,7 @@ class AdditionalInfo extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -182,7 +183,7 @@ class AdditionalInfo extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -213,7 +214,7 @@ class AdditionalInfo extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

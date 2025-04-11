@@ -11,6 +11,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class ProfilePage extends StatelessWidget {
@@ -20,7 +21,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         AutoRouter.of(context).replace(HomeScreenMainRoute());
         return false;
       },
@@ -29,7 +30,7 @@ class ProfilePage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title:  Text(
+            title: Text(
               localization.profile,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -38,17 +39,17 @@ class ProfilePage extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: EdgeInsets.all(18.0.w),
               child: Column(
-                children: const [
+                children: [
                   VerifyEmail(),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   ProfileImage(),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   CommunityConnect(),
-                  SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   ContactInfo(), // Uses the shared UserProfileBloc
-                  SizedBox(height: 15),
+                  SizedBox(height: 15.h),
                   AdditionalInfo(),
                 ],
               ),

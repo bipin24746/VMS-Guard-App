@@ -6,6 +6,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dayonecontacts/features/personal%20_staff/domain/entity/personal_staff_roles_entity.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PersonalStaffRoles extends StatefulWidget {
   const PersonalStaffRoles({super.key, required this.setStaffRoles,});
@@ -36,19 +37,19 @@ class _PersonalStaffRolesState extends State<PersonalStaffRoles> {
           final personalStaffRoles = state.personalStaffRoles;
 
           return SizedBox(
-            height: 45,
+            height: 45.h,
             child: DecoratedBox(
               decoration: BoxDecoration(
                   border: Border.all(),
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10.r)),
               child: DropdownButton<String>(
                 value: _selectedStaffRole,
                 hint: Padding(
-                  padding:  EdgeInsets.all(8.0),
+                  padding:  EdgeInsets.all(8.0.w),
                   child: Text(
                     localization.selectstaffrole,
                     style: TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),
+                        fontSize: 15.sp, fontWeight: FontWeight.bold),
                   ),
                 ),
                 isExpanded: true,
@@ -57,7 +58,7 @@ class _PersonalStaffRolesState extends State<PersonalStaffRoles> {
                     return DropdownMenuItem<String>(
                       value: role.name, // Assuming 'name' is the role name
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:  EdgeInsets.all(8.0.w),
                         child: Text(role.name),
                       ),
                     );

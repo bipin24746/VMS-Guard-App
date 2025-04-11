@@ -1,5 +1,6 @@
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VerifyEmail extends StatelessWidget {
   const VerifyEmail({super.key});
@@ -21,8 +22,8 @@ class VerifyEmail extends StatelessWidget {
                   Colors.lightBlueAccent
                 ],
               ),
-              borderRadius: BorderRadius.circular(10)),child: Padding(
-            padding: const EdgeInsets.all(8.0),
+              borderRadius: BorderRadius.circular(10.r)),child: Padding(
+            padding:  EdgeInsets.all(8.0.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,15 +32,15 @@ class VerifyEmail extends StatelessWidget {
                 Text(
                   localization
                       .pleaseverifyyouremailadresssoitcanhelpyouinfuturetochangeyourphonenumberlikewisewewillsendyouimplrtnotificationviaemail,
-                  style: TextStyle(fontSize: 12),
+                  style: TextStyle(fontSize: 12.sp),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(4.0),
+                  padding:  EdgeInsets.all(4.0.w),
                   child: Container(
-                    height: 40,
+                    height: 40.h,
                     width: MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                         color: Colors.orangeAccent.withOpacity(0.1),
@@ -50,7 +51,7 @@ class VerifyEmail extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.orange,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20),
+                              fontSize: 20.sp),
                         )),
                   ),
                 )

@@ -3,6 +3,7 @@ import 'package:dayonecontacts/features/personal%20_staff/presentation/screens/p
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class PersonalStaffStatus extends StatefulWidget {
@@ -28,7 +29,7 @@ class _PersonalStaffStatusState extends State<PersonalStaffStatus> {
           appBar: AppBar(
             title: Text(
               localization.yourpersonalstaff,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
             ),
             bottom: TabBar(tabs: [
               Tab(text: localization.working),
@@ -50,10 +51,10 @@ class _PersonalStaffStatusState extends State<PersonalStaffStatus> {
           },
            child: CircleAvatar(
                 backgroundColor: Colors.deepOrange,
-                radius: 30,
+                radius: 30.r,
                 child: Icon(
                   Icons.add,
-                  size: 30,
+                  size: 30.sp,
                   color: Colors.white,
                 )),
           ),
