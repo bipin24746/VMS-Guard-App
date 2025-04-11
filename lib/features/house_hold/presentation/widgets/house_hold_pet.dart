@@ -1,6 +1,7 @@
 import 'package:dayonecontacts/features/house_hold/presentation/widgets/get_pet_page.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HouseHoldPet extends StatelessWidget {
   const HouseHoldPet({super.key});
@@ -14,16 +15,16 @@ class HouseHoldPet extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding:  EdgeInsets.only(left: 10.0, right: 10),
+              padding:  EdgeInsets.only(left: 10.0.w, right: 10.w),
               child: Icon(Icons.pets),
             ),
             Text(
             localization.pets,
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
             ),
           ],
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         GetPetPage()
       ],
     );

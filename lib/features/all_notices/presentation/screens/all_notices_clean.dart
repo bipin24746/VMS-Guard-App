@@ -5,6 +5,7 @@ import 'package:dayonecontacts/features/all_notices/presentation/bloc/all_notice
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 @RoutePage()
@@ -77,7 +78,7 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
         backgroundColor: Colors.red,
         title: Text(
           localization.notices,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
@@ -107,19 +108,19 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
               .format(allnotice.createdAt); //"hh:mm a"
 
           return Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(15.w), // Responsive padding
             child: Container(
-              width: MediaQuery.of(context).size.width,
+              width: 1.sw, // Full screen width
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 0.2,
-                    offset: Offset(0, 5),
+                    offset: Offset(0, 5.h),
                   ),
                 ],
-                color: Color(0xFFF9FAFF),
-                borderRadius: BorderRadius.circular(16),
+                color: const Color(0xFFF9FAFF),
+                borderRadius: BorderRadius.circular(16.r),
               ),
               child: Column(
                 children: [
@@ -128,58 +129,67 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
                       decoration: BoxDecoration(
                         color: Colors.black,
                         border: Border.all(),
-                        borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(25.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 5, bottom: 5, left: 25, right: 25),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 5.h,
+                          horizontal: 25.w,
+                        ),
                         child: Text(
                           allnotice.category,
                           style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.sp,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 10.h),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.w),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           allnotice.title,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.sp,
+                          ),
                         ),
+                        SizedBox(height: 5.h),
                         Row(
                           children: [
-                            Text(formattedDate), // Display formatted date
-                            Padding(
-                              padding: const EdgeInsets.only(left: 18.0),
-                              child:
-                                  Text(formattedTime), // Display formatted time
+                            Text(
+                              formattedDate,
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
+                            SizedBox(width: 18.w),
+                            Text(
+                              formattedTime,
+                              style: TextStyle(fontSize: 13.sp),
                             ),
                           ],
                         ),
                         Divider(
-                          thickness: 2,
+                          thickness: 2.h,
                           color: Colors.orangeAccent.withOpacity(0.3),
                         ),
-                        // Show the message text and conditionally display more or less
                         Text(
                           allnotice.message,
                           maxLines: expandedStates[index] ? null : 3,
                           overflow: expandedStates[index]
                               ? TextOverflow.visible
                               : TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 14.sp),
                         ),
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              expandedStates[index] = !expandedStates[
-                                  index]; // Toggle the expansion state
+                              expandedStates[index] = !expandedStates[index];
                             });
                           },
                           child: Text(
@@ -189,6 +199,7 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
                             style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
+                              fontSize: 13.sp,
                             ),
                           ),
                         ),
@@ -199,6 +210,7 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
               ),
             ),
           );
+
         },
       ),
     );
@@ -218,7 +230,7 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
           child: Row(
             children: [
               Icon(Icons.upgrade),
-              SizedBox(width: 10),
+              SizedBox(width: 10.sw),
               Text(localization.latestfirst),
             ],
           ),
@@ -228,7 +240,7 @@ class _AllNoticesCleanState extends State<AllNoticesClean> {
           child: Row(
             children: [
               Icon(Icons.download),
-              SizedBox(width: 10),
+              SizedBox(width: 10.sw),
               Text(localization.oldestfirst),
             ],
           ),

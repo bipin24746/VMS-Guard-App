@@ -1,3 +1,4 @@
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class DateOfBirth extends StatelessWidget {
@@ -6,6 +7,7 @@ class DateOfBirth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
 
     return SizedBox(
       height: 45,
@@ -13,7 +15,7 @@ class DateOfBirth extends StatelessWidget {
         controller: dobController,
         decoration: InputDecoration(
             border: OutlineInputBorder(),
-            label: Text("Date of Birth")),
+            label: Text(localization.dateofbirth)),
       ),
     );
   }

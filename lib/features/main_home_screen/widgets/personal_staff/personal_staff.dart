@@ -36,14 +36,15 @@ class PersonalStaffHome extends StatelessWidget {
                         Text(
                           localization.personalstaff,
                           style: TextStyle(
-                            fontSize: 20.sp, // Responsive font size
+                            fontSize: Localizations.localeOf(context).languageCode == 'en' ? 20.sp : 15.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+
                         Text(
                           localization.four,
                           style: TextStyle(
-                            fontSize: 20.sp,
+                            fontSize: Localizations.localeOf(context).languageCode == 'en' ? 20.sp : 15.sp,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange,
                           ),

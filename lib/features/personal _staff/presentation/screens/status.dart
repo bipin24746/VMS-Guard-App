@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/screens/pending_status.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class PersonalStaffStatus extends StatefulWidget {
 class _PersonalStaffStatusState extends State<PersonalStaffStatus> {
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return WillPopScope(
       onWillPop: () async{
         AutoRouter.of(context).replace(HomeScreenMainRoute());
@@ -25,21 +27,21 @@ class _PersonalStaffStatusState extends State<PersonalStaffStatus> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-              "Your Personal Staff",
+              localization.yourpersonalstaff,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             bottom: TabBar(tabs: [
-              Tab(text: "Working"),
-              Tab(text: "Pending"),
-              Tab(text: "Rejected"),
+              Tab(text: localization.working),
+              Tab(text: localization.pending),
+              Tab(text: localization.rejected),
             ]),
           ),
           body: TabBarView(children: [
             Center(
-              child: Text("Working"),
+              child: Text(localization.working),
             ),
             Center(child: PendingStatus()),
-            Center(child: Text("Rejected")),
+            Center(child: Text(localization.rejected)),
           ]),
           floatingActionButton: GestureDetector(
 

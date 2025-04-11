@@ -1,4 +1,4 @@
-import 'package:dayonecontacts/features/profile_page/presentation/user_profile_bloc/user_profile_bloc.dart';
+import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_profile_bloc.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

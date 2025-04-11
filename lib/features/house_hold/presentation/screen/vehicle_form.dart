@@ -5,8 +5,10 @@ import 'package:dayonecontacts/features/house_hold/presentation/bloc/vehicle_blo
 import 'package:dayonecontacts/features/house_hold/presentation/widgets/image_picker.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class VehicleForm extends StatefulWidget {
@@ -40,66 +42,64 @@ class _VehicleFormState extends State<VehicleForm> {
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
-            FocusScopeNode currentNode = FocusScope.of(context);
-            if (currentNode.focusedChild != null &&
-                !currentNode.hasPrimaryFocus) {
-              FocusManager.instance.primaryFocus!.unfocus();
-            }
+            FocusScope.of(context).unfocus();
           },
           child: Scaffold(
             appBar: AppBar(
-              title:  Text(
+              title: Text(
                 localization.addvehicle,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.sp,
+                ),
               ),
             ),
             body: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.w),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Upload photo
                     Center(
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () =>
-                                showImagePickerDialog(context, _pickImage),
+                            onTap: () => showImagePickerDialog(context, _pickImage),
                             child: Container(
-                              height: 100.0,
-                              width: 100.0,
-                              decoration:
-                                  const BoxDecoration(shape: BoxShape.circle),
+                              height: 100.w,
+                              width: 100.w,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                              ),
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
                                   _image != null
                                       ? ClipOval(
-                                          child: Image.file(
-                                            _image!,
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                          ),
-                                        )
-                                      : const Icon(Icons.car_repair),
+                                    child: Image.file(
+                                      _image!,
+                                      fit: BoxFit.cover,
+                                      width: 100.w,
+                                      height: 100.w,
+                                    ),
+                                  )
+                                      : Icon(Icons.car_repair, size: 30.sp),
                                   if (_image == null)
                                     Positioned(
                                       bottom: 0,
-                                      right: 5,
+                                      right: 5.w,
                                       child: Container(
-                                        padding: const EdgeInsets.all(5),
+                                        padding: EdgeInsets.all(5.w),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: Colors.white,
                                           border: Border.all(
-                                              color: Colors.orange, width: 1),
+                                              color: Colors.orange, width: 1.w),
                                         ),
-                                        child: const Icon(
+                                        child: Icon(
                                           Icons.image,
                                           color: Colors.orange,
-                                          size: 15,
+                                          size: 15.sp,
                                         ),
                                       ),
                                     ),
@@ -107,34 +107,39 @@ class _VehicleFormState extends State<VehicleForm> {
                               ),
                             ),
                           ),
-                           Text(
-                             localization.uploadphoto,
+                          SizedBox(height: 8.h),
+                          Text(
+                            localization.uploadphoto,
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
 
                     // Vehicle type dropdown
                     DecoratedBox(
                       decoration: BoxDecoration(
                         border: Border.all(),
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: DropdownButton<String>(
                           value: _selectedValue,
-                          hint:  Text(
+                          hint: Text(
                             localization.vehicletype,
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           isExpanded: true,
                           items: vehicles.map<DropdownMenuItem<String>>(
-                            (String vehicle) {
+                                (String vehicle) {
                               return DropdownMenuItem<String>(
                                 value: vehicle,
                                 child: Text(vehicle),
@@ -149,52 +154,58 @@ class _VehicleFormState extends State<VehicleForm> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
 
                     // Name Input
                     TextFormField(
                       controller: vehicleNameController,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: localization.name,
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+                      ],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
 
                     // Vehicle Number Input
                     TextFormField(
                       controller: vehicleNumberController,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: localization.vehiclenumber,
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                      ],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
 
                     // Loading indicator
                     if (state is VehicleLoading)
                       const Center(child: CircularProgressIndicator()),
 
-                    // Spacer to push the button down
-                    const SizedBox(height: 50),
+                    SizedBox(height: 50.h),
                   ],
                 ),
               ),
             ),
             bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: EdgeInsets.all(18.w),
               child: SizedBox(
-                height: 50,
+                height: 50.h,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrangeAccent),
+                    backgroundColor: Colors.deepOrangeAccent,
+                  ),
                   onPressed: () {
                     if (_selectedValue == null ||
                         vehicleNameController.text.isEmpty ||
                         vehicleNumberController.text.isEmpty ||
                         _image == null) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                         SnackBar(
+                        SnackBar(
                           content: Text(localization.pleasefillallfields),
                           backgroundColor: Colors.red,
                         ),
@@ -203,20 +214,21 @@ class _VehicleFormState extends State<VehicleForm> {
                     }
 
                     context.read<VehicleBloc>().add(
-                          CreateVehicleEvent(
-                            type: _selectedValue!,
-                            name: vehicleNameController.text,
-                            noplate: vehicleNumberController.text,
-                            image: _image,
-                          ),
-                        );
+                      CreateVehicleEvent(
+                        type: _selectedValue!,
+                        name: vehicleNameController.text,
+                        noplate: vehicleNumberController.text,
+                        image: _image,
+                      ),
+                    );
                   },
-                  child:  Text(
-                   localization.create,
+                  child: Text(
+                    localization.create,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

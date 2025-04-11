@@ -1,12 +1,12 @@
 import 'dart:io';
-
 import 'package:auto_route/annotations.dart';
 import 'package:dayonecontacts/features/house_hold/presentation/bloc/pet_bloc/pet_bloc.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../widgets/image_picker.dart';
 
 @RoutePage()
@@ -28,7 +28,6 @@ class _PetFormState extends State<PetForm> {
   final TextEditingController petBreedController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
 
-  // Function to pick an image using the ImagePicker
   void _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(source: source);
     if (pickedFile != null) {
@@ -41,25 +40,20 @@ class _PetFormState extends State<PetForm> {
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
+
     return BlocBuilder<PetBloc, PetState>(
       builder: (context, state) {
         return GestureDetector(
-          onTap: () {
-            FocusScopeNode currentNode = FocusScope.of(context);
-            if (currentNode.focusedChild != null &&
-                !currentNode.hasPrimaryFocus) {
-              FocusManager.instance.primaryFocus!.unfocus();
-            }
-          },
+          onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             appBar: AppBar(
-              title:  Text(
+              title: Text(
                 localization.addpet,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
               ),
             ),
             body: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.w),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,175 +62,160 @@ class _PetFormState extends State<PetForm> {
                       child: Column(
                         children: [
                           GestureDetector(
-                            onTap: () =>
-                                showImagePickerDialog(context, _pickImage),
+                            onTap: () => showImagePickerDialog(context, _pickImage),
                             child: Container(
-                              height: 100.0,
-                              width: 100.0,
-                              decoration:
-                                  const BoxDecoration(shape: BoxShape.circle),
+                              height: 100.h,
+                              width: 90.w,
+                              decoration: const BoxDecoration(shape: BoxShape.circle),
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
                                   _image != null
                                       ? ClipOval(
-                                          child: Image.file(
-                                            _image!,
-                                            fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
-                                          ),
-                                        )
-                                      : const Icon(Icons.car_repair),
+                                    child: Image.file(
+                                      _image!,
+                                      fit: BoxFit.cover,
+                                      width: 90.w,
+                                      height: 100.h,
+                                    ),
+                                  )
+                                      : Icon(Icons.pets, size: 40.sp),
                                   if (_image == null)
                                     Positioned(
                                       bottom: 0,
-                                      right: 5,
+                                      right: 5.w,
                                       child: Container(
-                                        padding: const EdgeInsets.all(5),
+                                        padding: EdgeInsets.all(5.r),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: Colors.white,
-                                          border: Border.all(
-                                              color: Colors.orange, width: 1),
+                                          border: Border.all(color: Colors.orange, width: 1.w),
                                         ),
-                                        child: const Icon(
-                                          Icons.image,
-                                          color: Colors.orange,
-                                          size: 15,
-                                        ),
+                                        child: Icon(Icons.image, color: Colors.orange, size: 15.sp),
                                       ),
                                     ),
                                 ],
                               ),
                             ),
                           ),
-                           Text(
+                          SizedBox(height: 8.h),
+                          Text(
                             localization.uploadphoto,
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
 
                     // Pet type dropdown
                     DecoratedBox(
                       decoration: BoxDecoration(
                         border: Border.all(),
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: DropdownButton<String>(
                           value: _selectedValueType,
-                          hint:  Text(
+                          hint: Text(
                             localization.pettype,
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
                           ),
                           isExpanded: true,
                           items: petType.map<DropdownMenuItem<String>>(
-                            (String petType) {
+                                (String type) {
                               return DropdownMenuItem<String>(
-                                value: petType,
-                                child: Text(petType),
+                                value: type,
+                                child: Text(type),
                               );
                             },
                           ).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _selectedValueType = newValue;
-                            });
-                          },
+                          onChanged: (newValue) => setState(() => _selectedValueType = newValue),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
 
-                    // Pet Name Input
+                    // Pet name
                     TextFormField(
                       controller: petNameController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
                         labelText: "Pet Name*",
                       ),
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]'))],
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
 
-                    // Pet Age Input
+                    // Pet age
                     TextFormField(
                       controller: petAgeController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: "Pet Age*",
                       ),
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                       keyboardType: TextInputType.number,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
 
-                    // Pet Breed Input
+                    // Pet breed
                     TextFormField(
                       controller: petBreedController,
-                      decoration:  InputDecoration(
-                        border: OutlineInputBorder(),
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
                         labelText: localization.petbreed,
                       ),
+                      inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]'))],
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
 
                     // Gender dropdown
                     DecoratedBox(
                       decoration: BoxDecoration(
                         border: Border.all(),
-                        borderRadius: BorderRadius.circular(5),
+                        borderRadius: BorderRadius.circular(5.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: DropdownButton<String>(
                           value: _selectedValueGender,
-                          hint:  Text(
+                          hint: Text(
                             localization.gender,
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
                           ),
                           isExpanded: true,
                           items: petGender.map<DropdownMenuItem<String>>(
-                            (String gender) {
+                                (String gender) {
                               return DropdownMenuItem<String>(
                                 value: gender,
                                 child: Text(gender),
                               );
                             },
                           ).toList(),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              _selectedValueGender = newValue;
-                            });
-                          },
+                          onChanged: (newValue) => setState(() => _selectedValueGender = newValue),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
 
-                    // Loading indicator
                     if (state is PetLoading)
                       const Center(child: CircularProgressIndicator()),
 
-                    // Spacer to push the button down
-                    const SizedBox(height: 50),
+                    SizedBox(height: 50.h),
                   ],
                 ),
               ),
             ),
             bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: EdgeInsets.all(18.w),
               child: SizedBox(
-                height: 50,
+                height: 50.h,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepOrangeAccent),
+                    backgroundColor: Colors.deepOrangeAccent,
+                  ),
                   onPressed: () {
                     if (_selectedValueType == null ||
                         _selectedValueGender == null ||
@@ -245,7 +224,7 @@ class _PetFormState extends State<PetForm> {
                         petBreedController.text.isEmpty ||
                         _image == null) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                         SnackBar(
+                        SnackBar(
                           content: Text(localization.pleasefillallfields),
                           backgroundColor: Colors.red,
                         ),
@@ -254,22 +233,23 @@ class _PetFormState extends State<PetForm> {
                     }
 
                     context.read<PetBloc>().add(
-                          CreatePetEvent(
-                            type: _selectedValueType!,
-                            name: petNameController.text,
-                            age: petAgeController.text,
-                            breed: petBreedController.text,
-                            image: _image,
-                            gender: _selectedValueGender!,
-                          ),
-                        );
+                      CreatePetEvent(
+                        type: _selectedValueType!,
+                        name: petNameController.text,
+                        age: petAgeController.text,
+                        breed: petBreedController.text,
+                        image: _image,
+                        gender: _selectedValueGender!,
+                      ),
+                    );
                   },
-                  child:  Text(
+                  child: Text(
                     localization.create,
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.white,
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

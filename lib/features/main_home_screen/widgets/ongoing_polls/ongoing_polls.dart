@@ -1,5 +1,6 @@
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OngoingPollsHome extends StatelessWidget {
   const OngoingPollsHome({super.key});
@@ -10,9 +11,9 @@ class OngoingPollsHome extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.lightGreenAccent,
-      height: 450,
+      height: 450.h,
       child: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding: EdgeInsets.all(18.0.w),
         child: Column(
           children: [
             Row(
@@ -22,8 +23,8 @@ class OngoingPollsHome extends StatelessWidget {
                   children: [
                     Text(
                       localization.ongoingpolls,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20.sp),
                     ),
                   ],
                 ),
@@ -31,11 +32,11 @@ class OngoingPollsHome extends StatelessWidget {
                   children: [
                     Text(
                       localization.viewall,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15.sp),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
+                      padding: EdgeInsets.only(left: 8.0.w),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -49,118 +50,117 @@ class OngoingPollsHome extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 20.h,
             ),
             SizedBox(
-
-              width: MediaQuery.of(context).size.width,
-
-              child: DecoratedBox(decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      offset: Offset(0, 5),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(10)),child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      localization
-                          .helloeveryonewearegoingtoorganizefutsalincomingsaturday,
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                    ),
-                    Text(
-                      localization.nov1620231020am,
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.lightGreenAccent,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.grey),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 8.0, left: 15, bottom: 8),
-                        child: Text(
-                          localization.yes,
+                width: MediaQuery.of(context).size.width,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          offset: Offset(0, 5),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(10.r)),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          localization
+                              .helloeveryonewearegoingtoorganizefutsalincomingsaturday,
                           style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.bold, fontSize: 15.sp),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.grey),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 8.0, left: 15, bottom: 8),
-                        child: Text(
-                          localization.no,
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
+                        Text(
+                          localization.nov1620231020am,
+                          style: TextStyle(fontSize: 15.sp),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.blueGrey),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Center(
-                            child: Text(
-                              localization.vote,
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.bold),
-                            )),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-
-                        child: DecoratedBox(
+                        Divider(
+                          thickness: 1,
+                          color: Colors.lightGreenAccent,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.blueGrey),
-                            borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(30.r),
+                              color: Colors.grey),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: 8.0.h, left: 15.w, bottom: 8.h),
+                            child: Text(
+                              localization.yes,
+                              style: TextStyle(
+                                  fontSize: 15.sp, fontWeight: FontWeight.bold),
+                            ),
                           ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.r),
+                              color: Colors.grey),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: 8.0.h, left: 15.w, bottom: 8.h),
+                            child: Text(
+                              localization.no,
+                              style: TextStyle(
+                                  fontSize: 15.sp, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.r),
+                              color: Colors.blueGrey),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
+                            child: Center(
+                                child: Text(
+                              localization.vote,
+                              style: TextStyle(
+                                  fontSize: 15.sp, fontWeight: FontWeight.bold),
+                            )),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                        ),
+                        SizedBox(
+                            child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blueGrey),
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0.w),
                             child: Wrap(
                               children: [
                                 Row(
                                   children: [
                                     Text(
                                       localization.totalresponse,
-                                      style: TextStyle(fontSize: 15),
+                                      style: TextStyle(fontSize: 15.sp),
                                     ),
                                     Text(
                                       localization.three,
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 15.sp,
                                           fontWeight: FontWeight.bold),
                                     )
                                   ],
@@ -171,13 +171,13 @@ class OngoingPollsHome extends StatelessWidget {
                                     Text(
                                       localization.pollendsin,
                                       style: TextStyle(
-                                        fontSize: 13,
+                                        fontSize: Localizations.localeOf(context).languageCode == 'en' ? 15.sp : 10.sp,
                                       ),
                                     ),
                                     Text(
                                       localization.fivehr,
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: Localizations.localeOf(context).languageCode == 'en' ? 15.sp : 10.sp,
                                           fontWeight: FontWeight.bold),
                                     )
                                   ],
@@ -186,10 +186,10 @@ class OngoingPollsHome extends StatelessWidget {
                             ),
                           ),
                         ))
-                  ],
-                ),
-              ),)
-            )
+                      ],
+                    ),
+                  ),
+                ))
           ],
         ),
       ),

@@ -8,7 +8,9 @@ import 'package:dayonecontacts/features/house_hold/presentation/widgets/image_pi
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 @RoutePage()
@@ -91,11 +93,11 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
               appBar: AppBar(
                 title: Text(
                   localization.editvehicle,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
                 ),
               ),
               body: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:  EdgeInsets.all(16.0.w),
                 child: BlocBuilder<VehicleBloc, VehicleState>(
                   builder: (context, state) {
                     return Column(
@@ -109,8 +111,8 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                                 onTap: () =>
                                     showImagePickerDialog(context, _pickImage),
                                 child: Container(
-                                  height: 100.0,
-                                  width: 100.0,
+                                  height: 100.0.h,
+                                  width: 90.0.w,
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
@@ -123,8 +125,8 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                                               child: Image.file(
                                                 _image!,
                                                 fit: BoxFit.cover,
-                                                width: 100,
-                                                height: 100,
+                                                width: 90.w,
+                                                height: 100.h,
                                               ),
                                             )
                                           : widget.vehicle.imageUrl !=
@@ -133,28 +135,28 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                                                   child: Image.network(
                                                     widget.vehicle.imageUrl!,
                                                     fit: BoxFit.cover,
-                                                    width: 100,
-                                                    height: 100,
+                                                    width: 90.w,
+                                                    height: 100.h,
                                                   ),
                                                 )
                                               : const Icon(Icons
                                                   .add), // Default icon if no image is available
 
                                       Positioned(
-                                        bottom: 0,
-                                        right: 5,
+                                        bottom: 0.h,
+                                        right: 5.w,
                                         child: Container(
-                                          padding: const EdgeInsets.all(5),
+                                          padding:  EdgeInsets.all(5.w),
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Colors.white,
                                             border: Border.all(
-                                                color: Colors.orange, width: 1),
+                                                color: Colors.orange, width: 1.w),
                                           ),
-                                          child: const Icon(
+                                          child:  Icon(
                                             Icons.image,
                                             color: Colors.orange,
-                                            size: 15,
+                                            size: 15.sp,
                                           ),
                                         ),
                                       ),
@@ -165,12 +167,12 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                               Text(
                                 localization.uploadphoto,
                                 style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                    fontSize: 15.sp, fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(height: 20),
+                         SizedBox(height: 20.h),
 
                         // Vehicle type dropdown
                         DecoratedBox(
@@ -180,13 +182,13 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                           ),
                           child: Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                                 EdgeInsets.symmetric(horizontal: 8.0.w),
                             child: DropdownButton<String>(
                               value: _selectedValue,
                               hint: Text(
                                 localization.vehicletype,
                                 style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                                    fontSize: 15.sp, fontWeight: FontWeight.bold),
                               ),
                               isExpanded: true,
                               items: vehicles.map<DropdownMenuItem<String>>(
@@ -204,7 +206,7 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                         SizedBox(height: 10.h),
 
                         // Name Input
                         TextFormField(
@@ -213,8 +215,11 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                             border: OutlineInputBorder(),
                             labelText: localization.name,
                           ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+                          ],
                         ),
-                        const SizedBox(height: 10),
+                         SizedBox(height: 10.h),
 
                         // Vehicle Number Input
                         TextFormField(
@@ -223,8 +228,11 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                             border: OutlineInputBorder(),
                             labelText: localization.vehiclenumber,
                           ),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9]')),
+                          ],
                         ),
-                        const SizedBox(height: 20),
+                         SizedBox(height: 20.h),
 
                         // Loading indicator
                         if (state is VehicleLoading)
@@ -235,9 +243,9 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                 ),
               ),
               bottomNavigationBar: Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding:  EdgeInsets.all(18.0.w),
                 child: SizedBox(
-                  height: 50,
+                  height: 50.h,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.deepOrangeAccent),
@@ -279,7 +287,7 @@ class _EditVehicleFormState extends State<EditVehicleForm> {
                       localization.update,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

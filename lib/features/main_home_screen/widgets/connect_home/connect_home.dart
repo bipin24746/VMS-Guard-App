@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import the generated localization class
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart'; // Import the generated localization class
 
 class ConnectHomeContainer extends StatelessWidget {
   const ConnectHomeContainer({super.key});
@@ -7,27 +8,27 @@ class ConnectHomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 250.h,
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.only(
-          top: 25.0,
+        padding:  EdgeInsets.only(
+          top: 25.0.h,
         ),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.lightBlueAccent,
             borderRadius: BorderRadius.only(
-              topRight: Radius.circular(200),
+              topRight: Radius.circular(200.r),
             ),
           ),
           child: Stack(children: [
             Padding(
-              padding: const EdgeInsets.only(top: 28.0, left: 15),
+              padding:  EdgeInsets.only(top: 28.0.h, left: 15.w),
               child: Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:  EdgeInsets.all(8.0.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -35,17 +36,17 @@ class ConnectHomeContainer extends StatelessWidget {
                           AppLocalizations.of(context)!
                               .strengtheningBonds, // Localized text
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           AppLocalizations.of(context)!
                               .ensuringSafety, // Localized text
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width /
-                              2, // Ensures the Divider spans the full width
+                              2.w, // Ensures the Divider spans the full width
                           child: Divider(
                             thickness: 1,
                             color: Colors.white,
@@ -55,7 +56,7 @@ class ConnectHomeContainer extends StatelessWidget {
                           AppLocalizations.of(context)!
                               .connectHome, // Localized text
                           style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.orange),
                         ),
@@ -66,30 +67,30 @@ class ConnectHomeContainer extends StatelessWidget {
               ),
             ),
             Positioned(
-              bottom: -26,
-              right: 70,
+              bottom: -26.h,
+              right: 70.w,
               child: Icon(
                 Icons.home,
                 color: Colors.red,
-                size: 150,
+                size: 150.sp,
               ),
             ),
             Positioned(
-              bottom: -30,
-              right: -35,
+              bottom: -30.h,
+              right: -35.w,
               child: Icon(
                 Icons.home,
                 color: Colors.deepOrangeAccent,
-                size: 170,
+                size: 170.sp,
               ),
             ),
             Positioned(
-              bottom: -35,
+              bottom: -35.h,
               right: 0,
               child: Icon(
                 Icons.home,
                 color: Colors.grey,
-                size: 200,
+                size: 200.sp,
               ),
             ),
           ]), // Stack

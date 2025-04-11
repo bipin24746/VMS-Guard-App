@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlatInfoContainer extends StatelessWidget {
   final String icon;
@@ -9,15 +10,15 @@ class FlatInfoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
-      width: 120,
+      height: 30.h,
+      width: 120.w,
       decoration: BoxDecoration(
         border: Border.all(),
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(5.r),
       ),
       child: Row(
         children: [
-          Image.asset(icon, width: 40),
+          Image.asset(icon, width: 40.sp),
           Text(label),
         ],
       ),

@@ -2,7 +2,7 @@ import 'package:dayonecontacts/features/main_home_screen/widgets/current_flat/do
 import 'package:dayonecontacts/features/main_home_screen/widgets/current_flat/presentation/widgets/flat_info_container.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlatInfoRow extends StatelessWidget {
   final Data data;
@@ -19,7 +19,7 @@ class FlatInfoRow extends StatelessWidget {
           icon: 'lib/assets/images/red_building.png',
           label: block?.name ?? localization.unknownblock,
         ),
-        const SizedBox(width: 10),
+        SizedBox(width: 10.w),
         FlatInfoContainer(
           icon: 'lib/assets/images/house.png',
           label: data.name ?? "Unknown Flat Number",

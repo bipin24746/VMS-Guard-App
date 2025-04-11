@@ -1,3 +1,4 @@
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class StaffCitizenshipNumber extends StatelessWidget {
@@ -6,6 +7,7 @@ class StaffCitizenshipNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
 
     return SizedBox(
       height: 45,
@@ -13,7 +15,7 @@ class StaffCitizenshipNumber extends StatelessWidget {
         controller: citizenshipController,
         decoration: InputDecoration(
             border: OutlineInputBorder(),
-            label: Text("Citizenship Number")),
+            label: Text(localization.citizenshipnumber,)),
       keyboardType: TextInputType.number,
       ),
 

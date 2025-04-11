@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:dayonecontacts/di/injection.dart';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/bloc/personal_staff_bloc/personal_staff_bloc.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,7 @@ class PendingStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return BlocProvider(
       create: (context) =>
       sl<PersonalStaffBloc>()..add(FetchPendingStaffEvent()),
@@ -18,14 +20,14 @@ class PendingStatus extends StatelessWidget {
           if (state is PersonalStaffSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("Pending Staff Fetch Successfully."),
+                content: Text(localization.pendingstafffetchsuccessfully),
                 backgroundColor: Colors.green,
               ),
             );
           } else if (state is PersonalStaffFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("Error: ${state.error}"),
+                content: Text("${localization.error}: ${state.error}"),
                 backgroundColor: Colors.red,
               ),
             );
@@ -37,7 +39,7 @@ class PendingStatus extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else if (state is PendingStaffFetchSuccess) {
               if (state.pendingStaff.isEmpty) {
-                return const Center(child: Text("No Pending Staffs"));
+                return Center(child: Text(localization.nopendingstaffs));
               }
 
               return ListView.builder(
@@ -70,7 +72,7 @@ class PendingStatus extends StatelessWidget {
                                   children: [
                                     Text(staff.name.isNotEmpty
                                         ? staff.name
-                                        : "Unknown Name"),
+                                        : localization.unknownname),
                                     SizedBox(height: 5,),
                                     SizedBox(
                                       width: 100,
@@ -85,7 +87,7 @@ class PendingStatus extends StatelessWidget {
                                             // Now access the name from staffRoleId, which is an instance of PersonalStaffRoleModel
                                             staff.staffRoleId.name.isNotEmpty == true
                                                 ? staff.staffRoleId.name
-                                                : "No Role",
+                                                : localization.norole,
                                             // Display role name
                                             style: const TextStyle(
                                               fontWeight: FontWeight.bold,

@@ -1,6 +1,7 @@
 import 'package:dayonecontacts/features/main_home_screen/widgets/current_flat/domain/entity/integration.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlatDetails extends StatelessWidget {
   final Data data;
@@ -15,31 +16,31 @@ class FlatDetails extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 90,
+          height: 90.h,
           // width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(10.r),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  EdgeInsets.all(8.0.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   apartment?.name ?? localization.unknownapartment,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                 ),
                 Row(
                   children: [
                     Text(
                       apartment?.area ?? localization.unknownarea,
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15.sp),
                     ),
-                    const SizedBox(width: 10),
+                     SizedBox(width: 10.w),
                     Text(
                       apartment?.city ?? localization.unknowncity,
-                      style: TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15.sp),
                     ),
                   ],
                 ),

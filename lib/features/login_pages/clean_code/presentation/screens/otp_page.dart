@@ -10,6 +10,7 @@ import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class OtpPage extends StatefulWidget {
@@ -93,36 +94,36 @@ class _OtpPageState extends State<OtpPage> {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(200),
+            preferredSize: Size.fromHeight(200.h),
             child: AppBar(
               backgroundColor: Colors.white,
               leading: IconButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: const Icon(
+                icon:  Icon(
                   Icons.arrow_back,
-                  size: 35,
+                  size: 35.sp,
                 ),
               ),
               flexibleSpace: SizedBox(
-                height: 300,
+                height: 300.h,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
+                  padding:  EdgeInsets.only(top: 15.0.h),
                   child: Image.asset("lib/assets/images/signupimage.png"),
                 ),
               ),
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            padding:  EdgeInsets.symmetric(horizontal: 18.0.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   localization!.otpVerification,
                   //   "OTP VERIFICATION",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
                 ),
                 Text(
                   localization.pleaseEnterThe6DigitCodeSentViaSMS,
@@ -139,7 +140,7 @@ class _OtpPageState extends State<OtpPage> {
                   showFieldAsBox: true,
                   onSubmit: (code) => _otpVerified.text = code,
                 ),
-                const SizedBox(height: 10),
+                 SizedBox(height: 10.h),
                 Row(
                   children: [
                     Text(
@@ -162,7 +163,7 @@ class _OtpPageState extends State<OtpPage> {
             ),
           ),
           bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding:  EdgeInsets.all(15.0.w),
             child: Builder(builder: (context) {
               return BlocListener<OtpVerificationBloc, OtpVerificationState>(
                 listener: (context, state) {

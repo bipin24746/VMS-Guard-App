@@ -1,3 +1,4 @@
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class StaffMobileNumber extends StatelessWidget {
@@ -6,6 +7,7 @@ class StaffMobileNumber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
 
     return SizedBox(
       height: 45,
@@ -14,7 +16,7 @@ class StaffMobileNumber extends StatelessWidget {
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           label: Text(
-            "Mobile Number",
+            localization.mobilenumber,
           ),
         ),
         keyboardType: TextInputType.number,

@@ -1,3 +1,4 @@
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class GenderDropdown extends StatelessWidget {
@@ -14,6 +15,7 @@ class GenderDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return SizedBox(
       height: 45,
       child: DecoratedBox(
@@ -23,10 +25,10 @@ class GenderDropdown extends StatelessWidget {
         ),
         child: DropdownButton<String>(
           value: selectedGender,
-          hint: const Padding(
+          hint:  Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Select Gender",
+              localization.selectgender,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
           ),

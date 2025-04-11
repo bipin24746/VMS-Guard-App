@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommonHomeNavBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonHomeNavBar({super.key});
@@ -16,10 +17,10 @@ class CommonHomeNavBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             Icon(
               Icons.home,
-              size: 20,
+              size: 20.sp,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+              padding:  EdgeInsets.only(left: 8.0.w),
               child: Column(
 
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,12 +28,12 @@ class CommonHomeNavBar extends StatelessWidget implements PreferredSizeWidget {
                   Text(
                     localization.citiplexcolony,
                     style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     localization.blockflat,
                     style:
-                        TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
                   )
                 ],
               ),
@@ -40,7 +41,7 @@ class CommonHomeNavBar extends StatelessWidget implements PreferredSizeWidget {
             Icon(Icons.arrow_downward),
             Spacer(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:  EdgeInsets.all(8.0.w),
               child: Icon(Icons.notifications_none_outlined),
             ),
             GestureDetector(
@@ -48,8 +49,8 @@ class CommonHomeNavBar extends StatelessWidget implements PreferredSizeWidget {
                 AutoRouter.of(context).push(ProfilePageRoute());
               },
               child: Container(
-                width: 40,
-                height: 40,
+                width: 40.w,
+                height: 40.h,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(

@@ -5,6 +5,7 @@ import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_bloc
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_event.dart';
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_state.dart';
 import 'package:dayonecontacts/features/sqf_lite/data/model/sqf_lite_model.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,7 @@ class SqfLiteReadData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final localization = AppLocalizations.of(context)!;
     return WillPopScope(
       onWillPop: () async {
         AutoRouter.of(context).replace(SqfAddScreenRoute());
@@ -24,7 +25,7 @@ class SqfLiteReadData extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text("All Local Data"),
+          title: Text(localization.alllocaldata),
         ),
         body: BlocProvider(
 
@@ -35,7 +36,7 @@ class SqfLiteReadData extends StatelessWidget {
                 return Center(child: CircularProgressIndicator());
               } else if (state is SqfLiteFetchSuccess) {
                 if (state.data.isEmpty) {
-                  return Center(child: Text("No Data Available"));
+                  return Center(child: Text(localization.nodataavailable));
                 }
                 return ListView.builder(
                   itemCount: state.data.length,
@@ -79,7 +80,7 @@ class SqfLiteReadData extends StatelessWidget {
                   },
                 );
               }
-              return Center(child: Text('Error loading data'));
+              return Center(child: Text(localization.errorloadingdata));
             },
           ),
         ),

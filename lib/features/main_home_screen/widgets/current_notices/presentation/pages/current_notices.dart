@@ -5,6 +5,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../domain/entities/integration.dart';
 import '../bloc/notice_bloc.dart';
 import 'package:intl/intl.dart';
@@ -42,13 +43,13 @@ class CurrentNoticeHome extends StatelessWidget {
 
     // Calculate height dynamically based on the number of notices
     double containerHeight = notices.data.length *
-        270.0; // Adjust item height (200) and extra padding (100)
+        270.0.h; // Adjust item height (200) and extra padding (100)
 
     return Container(
       height: containerHeight, // Set dynamic height
       color: Colors.orangeAccent.withOpacity(0.1),
       child: Padding(
-        padding: const EdgeInsets.all(18.0),
+        padding:  EdgeInsets.all(18.0.w),
         child: Column(
           children: [
             Row(
@@ -59,7 +60,7 @@ class CurrentNoticeHome extends StatelessWidget {
                     Text(
                       localization.currentnotices,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -74,7 +75,7 @@ class CurrentNoticeHome extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding:  EdgeInsets.only(left: 8.0.w),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -89,7 +90,7 @@ class CurrentNoticeHome extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 20.h,
             ),
             Expanded(
               child: ListView.builder(
@@ -104,13 +105,13 @@ class CurrentNoticeHome extends StatelessWidget {
                       DateFormat(localization.hhmma).format(notice.createdAt);
 
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                    padding:  EdgeInsets.only(bottom: 8.0.h),
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 200, // Fixed height per item
+                      height: 200.h, // Fixed height per item
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(16.r),
                       ),
                       child: Column(
                         children: [
@@ -119,11 +120,11 @@ class CurrentNoticeHome extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.black,
                                 border: Border.all(),
-                                borderRadius: BorderRadius.circular(25),
+                                borderRadius: BorderRadius.circular(25.r),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 25, right: 25),
+                                padding:  EdgeInsets.only(
+                                    top: 5.h, bottom: 5.h, left: 25.w, right: 25.w),
                                 child: Text(
                                   notice.category,
                                   style: TextStyle(
@@ -134,10 +135,10 @@ class CurrentNoticeHome extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 10.h,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding:  EdgeInsets.all(8.0.w),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +149,7 @@ class CurrentNoticeHome extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 18),
+                                      fontSize: 18.sp),
                                 ),
                                 Row(
                                   children: [
@@ -156,7 +157,7 @@ class CurrentNoticeHome extends StatelessWidget {
                                         formattedDate), // Display formatted date
                                     Padding(
                                       padding:
-                                          const EdgeInsets.only(left: 18.0),
+                                           EdgeInsets.only(left: 18.0.w),
                                       child: Text(
                                           formattedTime), // Display formatted time
                                     ),
@@ -194,7 +195,7 @@ class CurrentNoticeHome extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 40.h,
             ),
           ],
         ),

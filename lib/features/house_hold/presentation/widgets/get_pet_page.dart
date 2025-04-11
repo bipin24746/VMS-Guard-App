@@ -8,6 +8,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class GetPetPage extends StatefulWidget {
@@ -53,26 +54,26 @@ class _GetPetPageState extends State<GetPetPage> {
                 }
               },
               child: SizedBox(
-                height: MediaQuery.of(context).size.height / 2.4,
+                height: MediaQuery.of(context).size.height / 2.4.h,
                 width: MediaQuery.of(context).size.width,
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
+                      padding:  EdgeInsets.only(top: 18.0.h),
                       child: Text(
                         pet.name, // Access name property directly
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                        style:  TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20.sp),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.0.w),
                       child: Divider(thickness: 1),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.0.w),
                       child: CircleAvatar(
-                        radius: 40,
+                        radius: 40.r,
                         backgroundColor: Colors.grey,
                         backgroundImage: pet.imageUrl != null && pet.imageUrl!.isNotEmpty
                             ? CachedNetworkImageProvider(pet.imageUrl!)
@@ -82,8 +83,8 @@ class _GetPetPageState extends State<GetPetPage> {
                           pet.name.isNotEmpty
                               ? pet.name[0].toUpperCase()
                               : 'N',
-                          style: const TextStyle(
-                              fontSize: 18,
+                          style:  TextStyle(
+                              fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.white),
                         )
@@ -93,14 +94,14 @@ class _GetPetPageState extends State<GetPetPage> {
                     DecoratedBox(
                       decoration: BoxDecoration(
                         color: Colors.black,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                        padding:  EdgeInsets.symmetric(vertical: 2.h, horizontal: 8.w),
                         child: Text(
                           pet.typee, // Access type property directly
-                          style: const TextStyle(
-                            fontSize: 10,
+                          style:  TextStyle(
+                            fontSize: 10.sp,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
@@ -109,7 +110,7 @@ class _GetPetPageState extends State<GetPetPage> {
                     ),
                     Text(
                       pet.name, // Access noPlate property directly
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
                     ),
                     Row(
                       spacing: 5,
@@ -121,7 +122,7 @@ class _GetPetPageState extends State<GetPetPage> {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding:  EdgeInsets.all(8.0.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -130,8 +131,8 @@ class _GetPetPageState extends State<GetPetPage> {
                               AutoRouter.of(context).push(EditPetPageRoute(pet: pet));
                             },
                             child: Container(
-                              height: 40,
-                              width: 160,
+                              height: 40.h,
+                              width: 140.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 border: Border.all(color: Colors.orangeAccent),
@@ -158,11 +159,11 @@ class _GetPetPageState extends State<GetPetPage> {
                                   return AlertDialog(
                                     title: Text(
                                       localization.removepet,
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp),
                                     ),
                                     content: Text(
                                       localization.areyousureyouwanttoremovethispet,
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp),
                                     ),
                                     actions: <Widget>[
                                       TextButton(
@@ -185,8 +186,8 @@ class _GetPetPageState extends State<GetPetPage> {
                               );
                             },
                             child: Container(
-                              height: 40,
-                              width: 160,
+                              height: 40.h,
+                              width: 160.w,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
                                 border: Border.all(color: Colors.redAccent),
@@ -262,20 +263,20 @@ class _GetPetPageState extends State<GetPetPage> {
                             _petPopUp(context, pet);
                           },
                           child: Container(
-                            height: 100,
-                            width: 100,
-                            margin: const EdgeInsets.all(8.0),
+                            height: 100.h,
+                            width: 90.w,
+                            margin:  EdgeInsets.all(8.0.w),
                             decoration: BoxDecoration(
                               border: Border.all(),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 4.0),
+                                  padding:  EdgeInsets.only(top: 4.0.h),
                                   child: CircleAvatar(
-                                    radius: 23,
+                                    radius: 23.r,
                                     backgroundColor: Colors.grey,
                                     backgroundImage: pet.imageUrl != null
                                         ? NetworkImage(pet.imageUrl!)
@@ -289,14 +290,14 @@ class _GetPetPageState extends State<GetPetPage> {
                                 DecoratedBox(
                                   decoration: BoxDecoration(
                                     color: Colors.black,
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20.r),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+                                    padding:  EdgeInsets.symmetric(vertical: 2.h, horizontal: 8.w),
                                     child: Text(
                                       pet.name, // Display pet name
-                                      style: const TextStyle(
-                                          fontSize: 10,
+                                      style:  TextStyle(
+                                          fontSize: 10.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -316,7 +317,7 @@ class _GetPetPageState extends State<GetPetPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:  EdgeInsets.all(8.0.w),
                     child: PetCreateButton(),
                   ),
                 ],

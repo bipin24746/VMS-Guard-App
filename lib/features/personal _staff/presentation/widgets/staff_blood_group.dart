@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/screens/account_create_form.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class BloodGroupDropdown extends StatelessWidget {
@@ -16,6 +17,7 @@ class BloodGroupDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return SizedBox(
       height: 45,
       child: DecoratedBox(
@@ -25,10 +27,10 @@ class BloodGroupDropdown extends StatelessWidget {
         ),
         child: DropdownButton<String>(
           value: selectedBloodGroup,
-          hint: const Padding(
+          hint: Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Blood Group",
+              localization.bloodgroup,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class StaffStatus extends StatefulWidget {
   const StaffStatus({super.key});
@@ -49,12 +50,12 @@ class _StaffStatusState extends State<StaffStatus> {
     required VoidCallback onTap,
   }) {
     return Container(
-      height: 40,
-      width: 100,
+      height: 40.h,
+      width: 100.w,
       decoration: BoxDecoration(
         border: isSelected ? Border.all(color: Colors.green) : null,
         color: isSelected ? Colors.green.withOpacity(0.1) : null,
-        borderRadius: isSelected ? BorderRadius.circular(50) : null,
+        borderRadius: isSelected ? BorderRadius.circular(50.r) : null,
       ),
       child: TextButton(
         onPressed: onTap,

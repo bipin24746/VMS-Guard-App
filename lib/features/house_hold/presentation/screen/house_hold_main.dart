@@ -4,6 +4,7 @@ import 'package:dayonecontacts/features/house_hold/presentation/widgets/house_ho
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class HouseHoldMain extends StatelessWidget {
@@ -21,7 +22,7 @@ class HouseHoldMain extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             localization.household,
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
           ),
         ),
         body: SingleChildScrollView(

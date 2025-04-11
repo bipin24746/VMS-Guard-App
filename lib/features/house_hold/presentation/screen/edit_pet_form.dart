@@ -6,7 +6,9 @@ import 'package:dayonecontacts/features/house_hold/presentation/bloc/pet_bloc/pe
 import 'package:dayonecontacts/features/house_hold/presentation/widgets/image_picker.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 @RoutePage()
@@ -71,11 +73,11 @@ class _PetFormState extends State<EditPetForm> {
             appBar: AppBar(
               title: Text(
                 localization.editpet,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp),
               ),
             ),
             body: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding:  EdgeInsets.all(12.0.w),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,8 +89,8 @@ class _PetFormState extends State<EditPetForm> {
                             onTap: () =>
                                 showImagePickerDialog(context, _pickImage),
                             child: Container(
-                              height: 100.0,
-                              width: 100.0,
+                              height: 100.0.h,
+                              width: 90.0.w,
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
@@ -101,8 +103,8 @@ class _PetFormState extends State<EditPetForm> {
                                           child: Image.file(
                                             _image!,
                                             fit: BoxFit.cover,
-                                            width: 100,
-                                            height: 100,
+                                            width: 100.w,
+                                            height: 100.h,
                                           ),
                                         )
                                       : widget.pet.imageUrl !=
@@ -111,8 +113,8 @@ class _PetFormState extends State<EditPetForm> {
                                               child: Image.network(
                                                 widget.pet.imageUrl!,
                                                 fit: BoxFit.cover,
-                                                width: 100,
-                                                height: 100,
+                                                width: 90.w,
+                                                height: 100.h,
                                               ),
                                             )
                                           : const Icon(Icons
@@ -123,17 +125,17 @@ class _PetFormState extends State<EditPetForm> {
                                     bottom: 0,
                                     right: 5,
                                     child: Container(
-                                      padding: const EdgeInsets.all(5),
+                                      padding:  EdgeInsets.all(5.w),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.white,
                                         border: Border.all(
-                                            color: Colors.orange, width: 1),
+                                            color: Colors.orange, width: 1.w),
                                       ),
-                                      child: const Icon(
+                                      child:  Icon(
                                         Icons.image,
                                         color: Colors.orange,
-                                        size: 15,
+                                        size: 15.sp,
                                       ),
                                     ),
                                   ),
@@ -144,12 +146,12 @@ class _PetFormState extends State<EditPetForm> {
                           Text(
                             localization.uploadphoto,
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                                fontSize: 15.sp, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                     SizedBox(height: 20.h),
 
                     // Pet type dropdown
                     DecoratedBox(
@@ -158,13 +160,13 @@ class _PetFormState extends State<EditPetForm> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                         child: DropdownButton<String>(
                           value: _selectedValueType,
                           hint: Text(
                             localization.pettype,
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                                fontSize: 15.sp, fontWeight: FontWeight.bold),
                           ),
                           isExpanded: true,
                           items: petType.map<DropdownMenuItem<String>>(
@@ -183,7 +185,7 @@ class _PetFormState extends State<EditPetForm> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                     SizedBox(height: 10.h),
 
                     // Pet Name Input
                     TextFormField(
@@ -192,8 +194,11 @@ class _PetFormState extends State<EditPetForm> {
                         border: OutlineInputBorder(),
                         labelText: localization.petname,
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+                      ],
                     ),
-                    const SizedBox(height: 10),
+                     SizedBox(height: 10.h),
 
                     // Pet Age Input
                     TextFormField(
@@ -202,9 +207,12 @@ class _PetFormState extends State<EditPetForm> {
                         border: OutlineInputBorder(),
                         labelText: localization.petage,
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
                       keyboardType: TextInputType.number,
                     ),
-                    const SizedBox(height: 20),
+                     SizedBox(height: 20.h),
 
                     // Pet Breed Input
                     TextFormField(
@@ -213,8 +221,11 @@ class _PetFormState extends State<EditPetForm> {
                         border: OutlineInputBorder(),
                         labelText: localization.petbreed,
                       ),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+                      ],
                     ),
-                    const SizedBox(height: 20),
+                     SizedBox(height: 20.h),
 
                     // Gender dropdown
                     DecoratedBox(
@@ -223,13 +234,13 @@ class _PetFormState extends State<EditPetForm> {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                         child: DropdownButton<String>(
                           value: _selectedValueGender,
                           hint: Text(
                             localization.gender,
                             style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                                fontSize: 15.sp, fontWeight: FontWeight.bold),
                           ),
                           isExpanded: true,
                           items: petGender.map<DropdownMenuItem<String>>(
@@ -248,22 +259,22 @@ class _PetFormState extends State<EditPetForm> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                     SizedBox(height: 10.h),
 
                     // Loading indicator
                     if (state is PetLoading)
                       const Center(child: CircularProgressIndicator()),
 
                     // Spacer to push the button down
-                    const SizedBox(height: 50),
+                     SizedBox(height: 50.h),
                   ],
                 ),
               ),
             ),
             bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding:  EdgeInsets.all(18.0.w),
               child: SizedBox(
-                height: 50,
+                height: 50.h,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepOrangeAccent),
@@ -310,7 +321,7 @@ class _PetFormState extends State<EditPetForm> {
                     localization.updatepet,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

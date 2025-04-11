@@ -15,6 +15,7 @@ import 'package:dayonecontacts/features/personal%20_staff/presentation/widgets/s
 import 'package:dayonecontacts/features/personal%20_staff/presentation/widgets/staff_name.dart';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/widgets/staff_profile_photo.dart';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/widgets/staff_roles.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,6 +32,7 @@ class BloodGroupEntity {
 
 @RoutePage()
 class PersonalStaffAccountCreateForm extends StatefulWidget {
+
   const PersonalStaffAccountCreateForm({super.key});
 
   @override
@@ -105,6 +107,7 @@ class _PersonalStaffAccountCreateFormState
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => sl<PersonalStaffBloc>()),
@@ -120,7 +123,7 @@ class _PersonalStaffAccountCreateFormState
               if (state is PersonalStaffSuccess) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text("Staff Added Successfully"),
+                    content: Text(localization.staffaddedsuccessfully),
                     backgroundColor: Colors.green,
                   ),
                 );
@@ -146,7 +149,7 @@ class _PersonalStaffAccountCreateFormState
                 appBar: AppBar(
                   backgroundColor: Colors.white,
                   title: Text(
-                    "Create Account for Staff",
+                    localization.createaccountforstaff,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   elevation: 10,
@@ -226,7 +229,7 @@ class _PersonalStaffAccountCreateFormState
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Add Citizenship Photo"),
+                                  Text(localization.addcitizenshiphoto),
                                   Row(
                                     children: [
                                       StaffCitizenshipFrontImage(
@@ -269,7 +272,7 @@ class _PersonalStaffAccountCreateFormState
                             _citizenFrontImage == null) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
-                              content: Text("pleasefillallfields"),
+                              content: Text(localization.pleasefillallfields),
                               backgroundColor: Colors.red,
                             ),
                           );
@@ -293,7 +296,7 @@ class _PersonalStaffAccountCreateFormState
                             ));
                       },
                       child: Text(
-                        "Create",
+                        localization.create,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,

@@ -5,6 +5,7 @@ import 'package:dayonecontacts/features/sqf_lite/data/model/sqf_lite_model.dart'
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_bloc.dart';
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_event.dart';
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_state.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,9 +41,10 @@ class _SqfUpdateScreenState extends State<SqfUpdateScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Update Data"),
+        title: Text(localization.updatadata,),
       ),
       body: BlocProvider(
         create: (context) => sl<SqfLiteBloc>(),
@@ -58,7 +60,7 @@ class _SqfUpdateScreenState extends State<SqfUpdateScreen> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      hintText: "Enter name",
+                      hintText: localization.entername,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -69,7 +71,7 @@ class _SqfUpdateScreenState extends State<SqfUpdateScreen> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      hintText: "Enter age",
+                      hintText: localization.enterage,
                     ),
                   ),
                   SizedBox(height: 20),
@@ -88,13 +90,13 @@ class _SqfUpdateScreenState extends State<SqfUpdateScreen> {
                             age: update.age));
 
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Data Updated!')),
+                          SnackBar(content: Text(localization.dataupdated,)),
                         );
 
                         AutoRouter.of(context).push(SqfLiteReadDataRoute());
                       }
                     },
-                    child: Text("Update"),
+                    child: Text(localization.update),
                   ),
                 ],
               ),

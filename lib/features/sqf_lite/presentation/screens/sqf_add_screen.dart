@@ -1,10 +1,10 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/di/injection.dart';
 import 'package:dayonecontacts/features/sqf_lite/data/model/sqf_lite_model.dart';
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_bloc.dart';
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_event.dart';
 import 'package:dayonecontacts/features/sqf_lite/presentation/bloc/sqf_lite_state.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +18,7 @@ class SqfAddScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -33,7 +34,7 @@ class SqfAddScreen extends StatelessWidget {
             builder: (context, state) {
               return Scaffold(
                 appBar: AppBar(
-                  title: Text("SQLite Database"),
+                  title: Text(localization.sqlitedatabase),
                 ),
                 body: SingleChildScrollView(
                   child: Center(
@@ -47,7 +48,7 @@ class SqfAddScreen extends StatelessWidget {
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                hintText: "Enter name"),
+                                hintText: localization.entername),
                           ),
                           SizedBox(height: 20),
                           TextFormField(
@@ -57,7 +58,7 @@ class SqfAddScreen extends StatelessWidget {
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: "Enter age",
+                              hintText: localization.enterage,
                             ),
                           ),
                           SizedBox(height: 20),
@@ -71,7 +72,7 @@ class SqfAddScreen extends StatelessWidget {
                               nameController.clear();
                               ageController.clear();
                             },
-                            child: Text("Insert"),
+                            child: Text(localization.insert),
                           ),
                           SizedBox(height: 20),
                           ElevatedButton(
@@ -79,7 +80,7 @@ class SqfAddScreen extends StatelessWidget {
 
                               AutoRouter.of(context).push(SqfLiteReadDataRoute());
                             },
-                            child: Text("Read Data"),
+                            child: Text(localization.readdata),
                           ),
                           SizedBox(height: 20),
                         ],

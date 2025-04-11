@@ -9,6 +9,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GetVehiclePage extends StatefulWidget {
   const GetVehiclePage({
@@ -51,24 +52,24 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                   }
                 },
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 2.4,
+                  height: MediaQuery.of(context).size.height / 2.4.h,
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 18.0),
+                        padding:  EdgeInsets.only(top: 18.0.w),
                         child: Text(
                           vehicle.name, // Access name property directly
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold, fontSize: 20.sp),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:  EdgeInsets.all(8.0.w),
                         child: Divider(thickness: 1),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:  EdgeInsets.all(8.0.w),
                         child: CircleAvatar(
                           radius: 50,
                           backgroundColor: Colors.grey,
@@ -83,7 +84,7 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                                       ? vehicle.name[0].toUpperCase()
                                       : 'N',
                                   style: TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.white),
                                 )
@@ -93,15 +94,15 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                       DecoratedBox(
                         decoration: BoxDecoration(
                           color: Colors.black,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(20.r),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 2, horizontal: 8),
+                          padding:  EdgeInsets.symmetric(
+                              vertical: 2.h, horizontal: 8.w),
                           child: Text(
                             vehicle.type, // Access type property directly
                             style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 10.sp,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -111,10 +112,10 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                       Text(
                         vehicle.noplate, // Access noPlate property directly
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                            fontWeight: FontWeight.bold, fontSize: 20.sp),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding:  EdgeInsets.all(8.0.w),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -126,10 +127,10 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                                 // AutoRouter.of(context).push(EditVehiclePageRoute(vehicle: '')); // Passing the vehicle to Edit page
                               },
                               child: Container(
-                                height: 40,
-                                width: 160,
+                                height: 40.h,
+                                width: 160.h,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
+                                  borderRadius: BorderRadius.circular(25.r),
                                   border:
                                       Border.all(color: Colors.orangeAccent),
                                 ),
@@ -161,14 +162,14 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                                         localization.removevehicle,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15),
+                                            fontSize: 15.sp),
                                       ),
                                       content: Text(
                                           localization
                                               .areyousureyouwanttoremovethisvehicle,
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
-                                              fontSize: 15)),
+                                              fontSize: 15.sp)),
                                       actions: <Widget>[
                                         // "No" button - Closes the dialog
                                         TextButton(
@@ -200,8 +201,8 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                                 );
                               },
                               child: Container(
-                                height: 40,
-                                width: 160,
+                                height: 40.h,
+                                width: 160.w,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(25),
                                   border: Border.all(color: Colors.redAccent),
@@ -286,20 +287,20 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                             _vehiclePopUp(context, vehicle);
                           },
                           child: Container(
-                            height: 100,
-                            width: 100,
-                            margin: const EdgeInsets.all(8.0),
+                            height: 100.h,
+                            width: 90.w,
+                            margin:  EdgeInsets.all(8.0.w),
                             decoration: BoxDecoration(
                               border: Border.all(),
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(10.r),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 4.0),
+                                  padding:  EdgeInsets.only(top: 4.0.h),
                                   child: CircleAvatar(
-                                    radius: 23,
+                                    radius: 23.r,
                                     backgroundColor: Colors.grey,
                                     backgroundImage: vehicle.imageUrl != null
                                         ? NetworkImage(vehicle.imageUrl!)
@@ -314,15 +315,15 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                                 DecoratedBox(
                                   decoration: BoxDecoration(
                                     color: Colors.black,
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(20.r),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 2, horizontal: 8),
+                                    padding:  EdgeInsets.symmetric(
+                                        vertical: 2.h, horizontal: 8.w),
                                     child: Text(
                                       vehicle.name, // Display pet name
-                                      style: const TextStyle(
-                                          fontSize: 10,
+                                      style:  TextStyle(
+                                          fontSize: 10.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     ),
@@ -342,7 +343,7 @@ class _GetVehiclePageState extends State<GetVehiclePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:  EdgeInsets.all(8.0.w),
                     child: AddVehicleButton(),
                   ),
                 ],

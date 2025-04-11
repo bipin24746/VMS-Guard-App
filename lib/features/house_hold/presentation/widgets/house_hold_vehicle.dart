@@ -1,6 +1,7 @@
 import 'package:dayonecontacts/features/house_hold/presentation/widgets/get_vehicle_page.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HouseHoldVehicle extends StatelessWidget {
   const HouseHoldVehicle({super.key});
@@ -14,16 +15,16 @@ class HouseHoldVehicle extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 10.0, right: 10),
+              padding: EdgeInsets.only(left: 10.0.w, right: 10.w),
               child: Icon(Icons.pets),
             ),
             Text(
               localization.vehicles,
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
             ),
           ],
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         GetVehiclePage()
       ],
     );

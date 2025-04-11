@@ -4,6 +4,7 @@ import 'package:dayonecontacts/l10n/l10n.dart';
 
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _logout(BuildContext context) async {
@@ -23,8 +24,10 @@ class _HomeVisitorsState extends State<HomeVisitors> {
 
   // Navigate to different pages based on the visitor selection
   void _navigateToPage(BuildContext context, String visitorType) {
+    final localization= AppLocalizations.of(context)!;
     switch (visitorType) {
       case "Guest":
+      // case "Guest":
         break;
       case "Delivery":
         break;
@@ -44,15 +47,15 @@ class _HomeVisitorsState extends State<HomeVisitors> {
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
     return Container(
-      height: isExpanded ? 320 : null,
+      height: isExpanded ? 320.h : null,
       decoration: BoxDecoration(
         color: Color(0xFFeff4ff),
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
+          bottomLeft: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
         ),
       ),
-      padding: const EdgeInsets.only(left: 18.0, top: 18, bottom: 18),
+      padding:  EdgeInsets.only(left: 18.0.w, top: 18.h, bottom: 18.h),
       child: Column(
         children: [
           Row(
@@ -60,11 +63,11 @@ class _HomeVisitorsState extends State<HomeVisitors> {
             children: [
               Text(
                 localization.visitors,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
               Text(
                 localization.six,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
               Spacer(),
               TextButton(
@@ -88,14 +91,14 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                   });
                 },
                 child: SizedBox(
-                  height: 95,
-                  width: 80,
+                  height: 95.h,
+                  width: 80.w,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50),
+                        topLeft: Radius.circular(50.r),
+                        topRight: Radius.circular(50.r),
                       ),
                     ),
                     child: Column(
@@ -109,12 +112,12 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                                       Icon(
                                         Icons.home,
                                         color: Colors.white,
-                                        size: 30,
+                                        size: 30.sp,
                                       ),
                                       Text(
                                         localization.close,
                                         style: TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 10.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -126,12 +129,12 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                                       Icon(
                                         Icons.add,
                                         color: Colors.white,
-                                        size: 30,
+                                        size: 30.sp,
                                       ),
                                       Text(
                                         localization.addvisitor,
                                         style: TextStyle(
-                                          fontSize: 10,
+                                          fontSize: 10.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -145,7 +148,7 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                   ),
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -157,18 +160,18 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                         final isOnline = people['status'] == 'online';
 
                         return Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding:  EdgeInsets.all(8.0.w),
                           child: Column(
                             children: [
                               Container(
-                                width: 70,
-                                height: 80,
+                                width: 70.w,
+                                height: 80.h,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color:
                                         isOnline ? Colors.green : Colors.grey,
-                                    width: 3,
+                                    width: 3.w,
                                   ),
                                 ),
                                 child: Stack(
@@ -176,8 +179,8 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                                     Padding(
                                       padding: const EdgeInsets.all(2.0),
                                       child: Container(
-                                        width: 70,
-                                        height: 90,
+                                        width: 70.w,
+                                        height: 90.h,
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
@@ -188,11 +191,11 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                                       ),
                                     ),
                                     Positioned(
-                                      top: 10,
+                                      top: 10.h,
                                       right: 0,
                                       child: Container(
-                                        width: 15,
-                                        height: 15,
+                                        width: 15.w,
+                                        height: 15.h,
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: isOnline
@@ -207,16 +210,16 @@ class _HomeVisitorsState extends State<HomeVisitors> {
                                       left: 0,
                                       child: Center(
                                         child: Container(
-                                          padding: const EdgeInsets.all(3),
+                                          padding:  EdgeInsets.all(3.w),
                                           decoration: BoxDecoration(
                                             color: Colors.black,
                                             borderRadius:
-                                                BorderRadius.circular(10),
+                                                BorderRadius.circular(10.r),
                                           ),
                                           child: Text(
                                             people['shared'],
                                             style: TextStyle(
-                                                fontSize: 8,
+                                                fontSize: 8.sp,
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.bold),
                                           ),
@@ -241,62 +244,60 @@ class _HomeVisitorsState extends State<HomeVisitors> {
             ],
           ),
           if (isExpanded)
-            Container(
-              child: Column(
-                children: [
-                  Divider(
-                    thickness: 1,
-                    color: Colors.red,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        localization.allowfutureentriesforeasywaytogetinfromthegate,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 11),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Row(
-                        children: List.generate(hiddenVisitors.length, (index) {
-                          final visibleItem =
-                              hiddenVisitors[index]; // Access the map
-                          return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                _navigateToPage(context, visibleItem["text"]);
-                              },
-                              child: Column(
-                                children: [
-                                  Icon(
-                                    visibleItem[
-                                        "iconVisible"], // Access the icon key
-                                    size: 40,
-                                  ),
-                                  SizedBox(height: 5), // Add spacing
-                                  Text(
-                                    visibleItem["text"], // Access the text key
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+            Column(
+              children: [
+                Divider(
+                  thickness: 1,
+                  color: Colors.red,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      localization.allowfutureentriesforeasywaytogetinfromthegate,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 11.sp),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  children: [
+                    Row(
+                      children: List.generate(hiddenVisitors.length, (index) {
+                        final visibleItem =
+                            hiddenVisitors[index]; // Access the map
+                        return Padding(
+                          padding:
+                               EdgeInsets.symmetric(horizontal: 8.0.w),
+                          child: GestureDetector(
+                            onTap: () {
+                              _navigateToPage(context, visibleItem["text"]);
+                            },
+                            child: Column(
+                              children: [
+                                Icon(
+                                  visibleItem[
+                                      "iconVisible"], // Access the icon key
+                                  size: 40.sp,
+                                ),
+                                SizedBox(height: 5.h), // Add spacing
+                                Text(
+                                  visibleItem["text"], // Access the text key
+                                  style: TextStyle(
+                                      fontSize: 13.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                          );
-                        }),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                          ),
+                        );
+                      }),
+                    )
+                  ],
+                )
+              ],
             ),
         ],
       ),

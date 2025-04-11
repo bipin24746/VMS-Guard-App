@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/di/injection.dart';
-import 'package:dayonecontacts/features/profile_page/presentation/user_profile_bloc/user_profile_bloc.dart';
+import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_profile_bloc.dart';
 import 'package:dayonecontacts/features/profile_page/presentation/widgets/community_connect/community_connect_popup.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';

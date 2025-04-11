@@ -6,6 +6,7 @@ import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class BlocLoginPage extends StatefulWidget {
@@ -53,6 +54,7 @@ class _BlocLoginPageState extends State<BlocLoginPage> {
   @override
   Widget build(BuildContext context) {
     final localization = AppLocalizations.of(context)!;
+
     return BlocProvider(
       create: (context) => sl<AuthBloc>(),
       child: Builder(
@@ -76,107 +78,100 @@ class _BlocLoginPageState extends State<BlocLoginPage> {
               }
             },
             child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).unfocus();
-              },
+              onTap: () => FocusScope.of(context).unfocus(),
               child: Scaffold(
                 backgroundColor: Colors.white,
                 appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(200),
+                  preferredSize: Size.fromHeight(200.h),
                   child: AppBar(
                     backgroundColor: Colors.white,
                     flexibleSpace: Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
-                      child: Image.asset("lib/assets/images/signupimage.png"),
+                      padding: EdgeInsets.only(top: 15.h),
+                      child: Image.asset(
+                        "lib/assets/images/signupimage.png",
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
                 body: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 18.0, right: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 18.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           localization.beginyourjourneytohome,
-                          style:
-                              TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                        Text(
-                          localization
-                              .pleaseenteryourmobilenumbertocreateyouraccount,
-                          style: TextStyle(fontSize: 12),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.flag, color: Colors.red),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _phoneNoController,
-                                  decoration: InputDecoration(
-                                    labelText: localization.mobilenumber,
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.black),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.black),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  keyboardType: TextInputType.number,
-                                ),
-                              ),
-                            ],
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.sp,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        Text(
+                          localization.pleaseenteryourmobilenumbertocreateyouraccount,
+                          style: TextStyle(fontSize: 12.sp),
+                        ),
+                        SizedBox(height: 18.h),
+                        Row(
+                          children: [
+                            Container(
+                              height: 50.h,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(5.r),
+                              ),
+                              child: Center(
+                                child: Icon(Icons.flag, color: Colors.red, size: 24.sp),
+                              ),
+                            ),
+                            SizedBox(width: 10.w),
+                            Expanded(
+                              child: TextFormField(
+                                controller: _phoneNoController,
+                                decoration: InputDecoration(
+                                  labelText: localization.mobilenumber,
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(10.r),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                    borderRadius: BorderRadius.circular(10.r),
+                                  ),
+                                ),
+                                keyboardType: TextInputType.number,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 20.h),
                         BlocBuilder<LocalizationBloc, LocalizationState>(
                           builder: (context, localizationState) {
-                            _selectedLanguage =
-                                localizationState.locale.languageCode;
+                            _selectedLanguage = localizationState.locale.languageCode;
 
                             return SizedBox(
                               width: MediaQuery.of(context).size.width / 3,
                               child: DecoratedBox(
                                 decoration: BoxDecoration(
-                                    border: Border.all(),
-                                    borderRadius: BorderRadius.circular(10)),
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
                                 child: DropdownButton<String>(
                                   value: _selectedLanguage,
                                   hint: Center(
-                                    child: const Text(
+                                    child: Text(
                                       "Languages",
                                       style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold),
+                                          fontSize: 15.sp, fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   isExpanded: true,
                                   items: languages.map<DropdownMenuItem<String>>(
-                                    (Map<String, dynamic> language) {
+                                        (Map<String, dynamic> language) {
                                       return DropdownMenuItem<String>(
                                         value: language['code'],
-                                        child: Center(
-                                            child: Text(language['language'])),
+                                        child: Center(child: Text(language['language'])),
                                       );
                                     },
                                   ).toList(),
@@ -186,9 +181,9 @@ class _BlocLoginPageState extends State<BlocLoginPage> {
                                     });
 
                                     if (newValue != null) {
-                                      context.read<LocalizationBloc>().add(
-                                            ChangeLanguageEvent(Locale(newValue)),
-                                          );
+                                      context
+                                          .read<LocalizationBloc>()
+                                          .add(ChangeLanguageEvent(Locale(newValue)));
                                     }
                                   },
                                 ),
@@ -202,28 +197,30 @@ class _BlocLoginPageState extends State<BlocLoginPage> {
                 ),
                 bottomNavigationBar: Padding(
                   padding: EdgeInsets.only(
-                    left: 15.0,
-                    right: 15.0,
-                    bottom: MediaQuery.of(context).viewInsets.bottom + 15,
+                    left: 15.w,
+                    right: 15.w,
+                    bottom: MediaQuery.of(context).viewInsets.bottom + 15.h,
                   ),
                   child: SizedBox(
-                    height: 50,
+                    height: 50.h,
                     child: ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                      ),
                       onPressed: _isPhoneNumberValid
                           ? () {
-                              context.read<AuthBloc>().add(
-                                  AuthUserEvent(phoneNo: _phoneNoController.text));
-                            }
+                        context
+                            .read<AuthBloc>()
+                            .add(AuthUserEvent(phoneNo: _phoneNoController.text));
+                      }
                           : null,
-                      child: const Text(
-                        "Continue"
-                        ,
+                      child: Text(
+                        "Continue",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -231,7 +228,7 @@ class _BlocLoginPageState extends State<BlocLoginPage> {
               ),
             ),
           );
-        }
+        },
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:dayonecontacts/features/main_home_screen/widgets/current_flat/pr
 import 'package:dayonecontacts/features/main_home_screen/widgets/current_flat/presentation/widgets/title_widget.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FlatContainer extends StatelessWidget {
   final CurrentFlatIntegration currentFlatIntegration;
@@ -21,9 +22,9 @@ class FlatContainer extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
       child: Container(
-        height: 200,
+        height: 200.h,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: Colors.white30,
@@ -31,15 +32,15 @@ class FlatContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TitleWidget(), // Displays the title "Your apartment"
-              const Divider(thickness: 2, color: Colors.blueGrey, height: 10),
+              Divider(thickness: 2, color: Colors.blueGrey, height: 10.h),
               FlatDetails(
                   data: data), // Displays detailed information about the flat
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               FlatInfoRow(data: data), // Displays additional flat info in a row
             ],
           ),

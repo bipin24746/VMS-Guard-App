@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dayonecontacts/di/injection.dart';
 import 'package:dayonecontacts/features/personal%20_staff/presentation/bloc/personal_staff_roles_bloc/personal_staff_roles_bloc.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dayonecontacts/features/personal%20_staff/domain/entity/personal_staff_roles_entity.dart';
@@ -20,6 +21,7 @@ class _PersonalStaffRolesState extends State<PersonalStaffRoles> {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return BlocBuilder<PersonalStaffRolesBloc, PersonalStaffRolesState>(
       builder: (context, state) {
         if (state is PersonalStaffRolesLoading) {
@@ -42,9 +44,9 @@ class _PersonalStaffRolesState extends State<PersonalStaffRoles> {
               child: DropdownButton<String>(
                 value: _selectedStaffRole,
                 hint: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:  EdgeInsets.all(8.0),
                   child: Text(
-                    "Select Staff Role",
+                    localization.selectstaffrole,
                     style: TextStyle(
                         fontSize: 15, fontWeight: FontWeight.bold),
                   ),
@@ -77,7 +79,7 @@ class _PersonalStaffRolesState extends State<PersonalStaffRoles> {
         }
 
         // In case none of the above states match, show a fallback message
-        return Center(child: Text("No staff roles available."));
+        return Center(child: Text(localization.nostaffrolesavailable));
       },
     );
   }

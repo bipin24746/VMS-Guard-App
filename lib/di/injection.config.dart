@@ -128,8 +128,8 @@ import 'package:dayonecontacts/features/profile_page/domain/user_profile_usecase
     as _i28;
 import 'package:dayonecontacts/features/profile_page/domain/user_profile_usecase/user_profile_usecase.dart'
     as _i318;
-import 'package:dayonecontacts/features/profile_page/presentation/user_profile_bloc/user_profile_bloc.dart'
-    as _i872;
+import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_profile_bloc.dart'
+    as _i556;
 import 'package:dayonecontacts/features/sqf_lite/data/data_source/sqf_lite_remote_data_source.dart'
     as _i189;
 import 'package:dayonecontacts/features/sqf_lite/data/repository_impl/sqf_lite_repo_impl.dart'
@@ -253,7 +253,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i920.SqfUpdateDataUseCase(gh<_i753.DatabaseRepository>()));
     gh.factory<_i364.CurrentFlatBloc>(() =>
         _i364.CurrentFlatBloc(getCurrentFlat: gh<_i284.GetCurrentFlat>()));
-    gh.factory<_i872.UserProfileBloc>(() => _i872.UserProfileBloc(
+    gh.factory<_i556.UserProfileBloc>(() => _i556.UserProfileBloc(
           gh<_i318.UserProfileUseCase>(),
           gh<_i744.CommunityConnectUseCase>(),
           gh<_i28.EditUserProfileUseCase>(),

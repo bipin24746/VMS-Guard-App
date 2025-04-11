@@ -1,7 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/di/injection.dart';
-import 'package:dayonecontacts/features/profile_page/presentation/user_profile_bloc/user_profile_bloc.dart';
+import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_profile_bloc.dart';
 import 'package:dayonecontacts/features/profile_page/presentation/widgets/additional_info.dart';
 import 'package:dayonecontacts/features/profile_page/presentation/widgets/community_connect/community_connect.dart';
 import 'package:dayonecontacts/features/profile_page/presentation/widgets/contact_info.dart';

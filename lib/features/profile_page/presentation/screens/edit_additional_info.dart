@@ -2,7 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dayonecontacts/di/injection.dart';
 import 'package:dayonecontacts/features/profile_page/domain/user_profile_entity/user_profile_entity.dart';
-import 'package:dayonecontacts/features/profile_page/presentation/user_profile_bloc/user_profile_bloc.dart';
+import 'package:dayonecontacts/features/profile_page/presentation/bloc/user_profile_bloc.dart';
 import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:dayonecontacts/router/app_router.gr.dart';
 import 'package:flutter/material.dart';

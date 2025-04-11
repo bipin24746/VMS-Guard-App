@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dayonecontacts/features/personal%20_staff/presentation/widgets/staff_image_picker.dart';
+import 'package:dayonecontacts/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -16,6 +17,7 @@ class StaffProfilePhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = AppLocalizations.of(context)!;
     return Row(
       children: [
         GestureDetector(
@@ -76,10 +78,10 @@ class StaffProfilePhoto extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.only(bottom: 4.0),
                     child: Text(
-                      "Add Photo",
+                      localization.addphoto,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -87,8 +89,8 @@ class StaffProfilePhoto extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Text(
-                    "Photo required for easy staff verification by guard and management",
+                   Text(
+                    localization.photorequiredforeasystaffverficationbyguardandmanagement,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
